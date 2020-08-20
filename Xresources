@@ -12,7 +12,7 @@ URxvt.clipboard.autocopy: true
 
 
 !! Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher,tabbed
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
 
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
