@@ -1,0 +1,75 @@
+URxvt.font: xft:hack:size=12
+URxvt*geometry: 84x22
+URxvt.letterSpace: 0
+URxvt.antialias: true
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.scrollBar: false
+URxvt.iconFile: /usr/share/icons/Papirus-Dark/64x64/apps/terminal.svg
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.clipboard.autocopy: true
+
+
+!! Extensions
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcher
+
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.matcher.button: 1
+
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 15
+URxvt.tabbed.tab-bg: 2
+
+
+!! Keybinds
+!!URxvt.keysym.Shift-Up: command:\033]720;1\007
+!!URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+!! Colors
+
+! special
+*.foreground:   #9f9f9f
+*.background:   #000000
+*.cursorColor:  #9f9f9f
+
+! black
+*.color0:       #1c1c1c
+*.color8:       #303030
+
+! red
+*.color1:       #af005f
+*.color9:       #af5f87
+
+! green
+*.color2:       #1c5f5f
+*.color10:      #008787
+
+! yellow
+*.color3:       #af871c
+*.color11:      #dfaf00
+
+! blue
+*.color4:       #1c5f87
+*.color12:      #5f87af
+
+! magenta
+*.color5:       #5f1c5f
+*.color13:      #875f87
+
+! cyan
+*.color6:       #005f87
+*.color14:      #0087af
+
+! white
+*.color7:       #afafaf
+*.color15:      #9f9f9f
