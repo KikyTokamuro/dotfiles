@@ -92,3 +92,9 @@ endif
 " vim-go settings
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+
+" Auto close preview window
+augroup completion_preview_close
+  autocmd!
+  autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
+augroup END
