@@ -72,10 +72,16 @@ endif
 
 " Vim-Plug plugins
 call plug#begin('~/.vim/plugged')
-    Plug 'joshdick/onedark.vim'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'ervandew/supertab'
+    " Statusline
     Plug 'itchyny/lightline.vim'
+    " One Dark Colors
+    Plug 'joshdick/onedark.vim'
+    " SuperTab
+    Plug 'ervandew/supertab'
+    " Golang
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    " Python
+    Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " lightline settings
