@@ -78,6 +78,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'joshdick/onedark.vim'
     " SuperTab
     Plug 'ervandew/supertab'
+    " NERDTree
+    Plug 'preservim/nerdtree'
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     " Python
@@ -95,9 +97,17 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " vim-go settings
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+
+" Merlin for Ocaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let maplocalleader="]"
 
 " Auto close preview window
 augroup completion_preview_close
