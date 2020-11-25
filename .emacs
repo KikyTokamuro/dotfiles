@@ -69,7 +69,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
- '(package-selected-packages '(company geiser jedi atom-one-dark-theme))
+ '(package-selected-packages '(paredit company geiser jedi atom-one-dark-theme))
  '(size-indication-mode nil))
 
 ;; Font settings
@@ -85,6 +85,16 @@
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Paredit
+(autoload 'enable-paredit-mode 
+	  "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;; Python
 (add-hook 'python-mode-hook 'jedi:setup)
