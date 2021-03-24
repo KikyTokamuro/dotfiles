@@ -9,7 +9,6 @@
 (setq ingibit-startup-message t)
 
 ;; Show-paren-mode settings
-(show-paren-mode t)
 (setq show-paren-style 'expression)
 
 ;; Electric-modes settings
@@ -20,11 +19,10 @@
 (delete-selection-mode t)
 
 ;; Disable GUI components
-(tooltip-mode      -1)
-(menu-bar-mode     -1)
-(tool-bar-mode     -1)
-(scroll-bar-mode   -1)
-(blink-cursor-mode -1)
+(tooltip-mode       -1)
+(menu-bar-mode       t)
+(scroll-bar-mode    -1)
+(blink-cursor-mode nil)
 
 ;; Bell off
 (setq ring-bell-function 'ignore)
@@ -50,9 +48,9 @@
 (global-set-key (kbd "<f2>") 'bs-show)
 
 ;; Indent settings
-(setq-default tab-width          4)
-(setq-default c-basic-offset     4)
-(setq-default standart-indent    4)
+;; (setq-default tab-width          4)
+;; (setq-default c-basic-offset     4)
+;; (setq-default standart-indent    4)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Scrolling settings
@@ -64,50 +62,35 @@
 (setq x-select-enable-clipboard t)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(cua-mode t nil (cua-base))
- '(package-selected-packages '(paredit company geiser jedi atom-one-dark-theme))
- '(size-indication-mode nil))
+ '(package-selected-packages
+   '(go-guru flymake-go go-autocomplete auto-complete exec-path-from-shell go-mode company))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 
 ;; Font settings
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 113 :width normal)))))
 
 ;; Color theme
-(load-theme 'atom-one-dark t)
+(load-theme 'misterioso t)
 
-;; Company
-(add-hook 'after-init-hook 'global-company-mode)
+;; PATH 
+(when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
+  (exec-path-from-shell-initialize))
 
-;; Paredit
-(autoload 'enable-paredit-mode 
-	  "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+;; go-mode loads
+(defun my-go-mode-hook ()
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (setq gofmt-command "goimports")
+  (go-guru-hl-identifier-mode)
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  (auto-complete-mode 1))
 
-;; Python
-(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
-;; Racket
-(require 'geiser-mode)
-
-(defun geiser-buffer () geiser-mode)
-
-(defun geiser-save-buffers-and-enter-module ()
-  (interactive)
-  (save-some-buffers t 'geiser-buffer)
-  (geiser-mode-switch-to-repl-and-enter))
-
-(define-key geiser-mode-map "\C-c\C-a"
-  'geiser-save-buffers-and-enter-module)
+(with-eval-after-load 'go-mode
+  (require 'go-guru)
+  (require 'go-autocomplete))
