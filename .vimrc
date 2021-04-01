@@ -50,7 +50,7 @@ set guioptions-=r
 set guioptions-=L
 
 " Font
-set guifont=Hack\ 10
+set guifont=Hack\ 11
 
 " Cursorline
 set cursorline
@@ -64,35 +64,25 @@ set smartindent
 
 filetype plugin on
 
-" Install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
 " Vim-Plug plugins
 call plug#begin('~/.vim/plugged')
+    " Nord colors
+    Plug 'arcticicestudio/nord-vim'
     " Statusline
     Plug 'itchyny/lightline.vim'
-    " One Dark Colors
-    Plug 'joshdick/onedark.vim'
-    " SuperTab
-    Plug 'ervandew/supertab'
     " NERDTree
     Plug 'preservim/nerdtree'
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    " Python
-    Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " lightline settings
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'nord',
       \ }
 
 " Colorscheme
-colorscheme onedark
+colorscheme nord
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -104,13 +94,18 @@ map <C-n> :NERDTreeToggle<CR>
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
-" Merlin for Ocaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-let maplocalleader="]"
-
 " Auto close preview window
 augroup completion_preview_close
   autocmd!
   autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
 augroup END
+
+" Notepad like keys :)
+"nmap <C-a> ggVG
+vmap <C-c> "+y
+nmap <C-c> "+yy
+nnoremap <C-b> <C-v>
+nnoremap <C-v> "+p
+vnoremap <C-v> "+p
+nnoremap <C-x> "+dd
+vnoremap <C-x> "+d
