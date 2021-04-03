@@ -4,11 +4,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
 
-;; PATH settings
-(when (memq window-system '(mac ns x))
-  (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
-  (exec-path-from-shell-initialize))
-
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -18,6 +13,11 @@
 (unless (cl-every 'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (package-install-selected-packages))
+
+;; PATH settings
+(when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
+  (exec-path-from-shell-initialize))
 
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -83,6 +83,23 @@
   (require 'go-guru)
   (require 'go-autocomplete))
 
-;; C
-(require 'cc-mode)
-(setq c-default-style "stroustrup")
+;; C/C++
+(defun my-c-mode-hook ()
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (company-mode 1)
+  (flycheck-mode 1)
+  (irony-mode 1))
+
+(with-eval-after-load 'my-c-mode-hook
+  (require 'company)
+  (require 'company-irony-c-headers)
+  (require 'flycheck-irony))
+
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+
