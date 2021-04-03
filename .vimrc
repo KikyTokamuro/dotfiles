@@ -74,6 +74,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'preservim/nerdtree'
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    " C/C++
+    Plug 'maralla/completor.vim'
 call plug#end()
 
 " lightline settings
@@ -90,15 +92,26 @@ endif
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" vim-go settings
+" Golang
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
-" Auto close preview window
-augroup completion_preview_close
-  autocmd!
-  autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
-augroup END
+" C/C++
+let g:completor_clang_binary = '/usr/bin/clang'
+function! Tab_Or_Complete() abort
+  if pumvisible()
+    return "\<C-N>"
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:completor_auto_trigger = 0
+inoremap <expr> <Tab> Tab_Or_Complete()
 
 " Notepad like keys :)
 "nmap <C-a> ggVG
