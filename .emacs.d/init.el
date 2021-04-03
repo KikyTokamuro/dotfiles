@@ -57,6 +57,9 @@
 ;; Indent settings
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; Buffers
+(global-set-key (kbd "C-x C-b") 'bs-show)
+
 ;; Scrolling settings
 (setq scroll-step               1)
 (setq scroll-margin             5)
