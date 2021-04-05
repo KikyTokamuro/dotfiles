@@ -61,9 +61,11 @@
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
 ;; Scrolling settings
-(setq scroll-step               1)
-(setq scroll-margin             5)
-(setq scroll-conservatively 10000)
+;; (setq scroll-step               1)
+;; (setq scroll-margin             5)
+;; (setq scroll-conservatively 10000)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
 
 ;; Clipboard settings
 (setq x-select-enable-clipboard t)
@@ -88,6 +90,10 @@
 
 ;; C/C++
 (defun my-c-mode-hook ()
+  (setq c-default-style "linux"
+        c-basic-offset 4
+	indent-tabs-mode nil)
+  (infer-indentation-style)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (eval-after-load 'company
   '(add-to-list

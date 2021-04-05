@@ -9,7 +9,7 @@
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(flycheck-irony company-irony-c-headers company-irony irony go-guru nord-theme go-mode go-autocomplete flymake-go exec-path-from-shell))
+   '(smooth-scrolling flycheck-irony company-irony-c-headers company-irony irony go-guru nord-theme go-mode go-autocomplete flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 
