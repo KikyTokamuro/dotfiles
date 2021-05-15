@@ -58,12 +58,9 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Buffers
-(global-set-key (kbd "C-x C-b") 'bs-show)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Scrolling settings
-;; (setq scroll-step               1)
-;; (setq scroll-margin             5)
-;; (setq scroll-conservatively 10000)
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 
@@ -72,6 +69,11 @@
 
 ;; Color theme
 (load-theme 'nord t)
+
+;; Helm
+(require 'helm)
+(setq-default helm-M-x-fuzzy-match t)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; Golang
 (defun my-go-mode-hook ()
@@ -88,41 +90,16 @@
   (require 'go-guru)
   (require 'go-autocomplete))
 
-;; C/C++
-(defun my-c-mode-hook ()
-  (setq c-default-style "linux"
-        c-basic-offset 4
-	indent-tabs-mode nil)
-  (infer-indentation-style)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (eval-after-load 'company
-  '(add-to-list
-    'company-backends '(company-irony-c-headers company-irony)))
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-  (company-mode 1)
-  (flycheck-mode 1)
-  (irony-mode 1))
-
-(with-eval-after-load 'my-c-mode-hook
-  (require 'company)
-  (require 'company-irony-c-headers)
-  (require 'flycheck-irony))
-
-(add-hook 'c++-mode-hook 'my-c-mode-hook)
-(add-hook 'c-mode-hook 'my-c-mode-hook)
-
-
 ;; Ocaml
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-  (when (and opam-share (file-directory-p opam-share))
-    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-    (autoload 'merlin-mode "merlin" nil t nil)
-    (add-hook 'tuareg-mode-hook 'merlin-mode t)
-    (add-hook 'caml-mode-hook 'merlin-mode t)
-    (setq merlin-command 'opam)))
+;;(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+;;  (when (and opam-share (file-directory-p opam-share))
+;;    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+;;    (autoload 'merlin-mode "merlin" nil t nil)
+;;    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+;;    (add-hook 'caml-mode-hook 'merlin-mode t)
+;;    (setq merlin-command 'opam)))
 
-(with-eval-after-load 'company
- (add-to-list 'company-backends 'merlin-company-backend))
+;;(with-eval-after-load 'company
+;; (add-to-list 'company-backends 'merlin-company-backend))
 
-(add-hook 'merlin-mode-hook 'company-mode)
+;;(add-hook 'merlin-mode-hook 'company-mode)
