@@ -9,7 +9,7 @@
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode go-autocomplete flymake-go exec-path-from-shell))
+   '(use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode go-autocomplete flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 

@@ -60,46 +60,54 @@
 ;; Buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; Scrolling settings
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
-
 ;; Clipboard settings
 (setq x-select-enable-clipboard t)
 
 ;; Color theme
 (load-theme 'nord t)
 
-;; Helm
-(require 'helm)
-(setq-default helm-M-x-fuzzy-match t)
-(global-set-key (kbd "M-x") 'helm-M-x)
+;; Use-package
+(require 'use-package)
 
-;; Golang
-(defun my-go-mode-hook ()
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  (setq gofmt-command "goimports")
-  (go-guru-hl-identifier-mode)
-  (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-*") 'pop-tag-mark)
+;; Smooth-scrolling
+(use-package smooth-scrolling
+  :init
+  (smooth-scrolling-mode 1))
+
+;; Helm
+(use-package helm
+  :init
+  (setq-default helm-M-x-fuzzy-match t)
+  :bind
+  (("M-x" . helm-M-x)
+   ("C-x C-f" . 'helm-find-files)))
+
+;; Auto-complete
+(use-package auto-complete
+  :commands auto-complete-mode
+  :init
   (auto-complete-mode 1))
 
-(add-hook 'go-mode-hook 'my-go-mode-hook)
+;; Go-mode
+(use-package go-mode
+  :mode ("\\.go\\'" . go-mode)
+  :init
+  (setq gofmt-command "goimports"
+	indent-tabs-mode t)
+  (use-package go-autocomplete)
+  (auto-complete-mode)
+  :config
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  :bind
+  (:map go-mode-map
+	("\C-c \C-c" . compile)
+        ("\C-c \C-g" . go-goto-imports)
+        ("\C-c \C-k" . godoc)
+        ("M-j" . pop-tag-mark)
+        ("M-k" . godef-jump)))
 
-(with-eval-after-load 'go-mode
-  (require 'go-guru)
-  (require 'go-autocomplete))
-
-;; Ocaml
-;;(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-;;  (when (and opam-share (file-directory-p opam-share))
-;;    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-;;    (autoload 'merlin-mode "merlin" nil t nil)
-;;    (add-hook 'tuareg-mode-hook 'merlin-mode t)
-;;    (add-hook 'caml-mode-hook 'merlin-mode t)
-;;    (setq merlin-command 'opam)))
-
-;;(with-eval-after-load 'company
-;; (add-to-list 'company-backends 'merlin-company-backend))
-
-;;(add-hook 'merlin-mode-hook 'company-mode)
+;; Go-guru
+(use-package go-guru
+  :ensure t
+  :hook
+  (go-mode . go-guru-hl-identifier-mode))
