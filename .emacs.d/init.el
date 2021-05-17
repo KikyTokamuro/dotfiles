@@ -90,12 +90,6 @@
   (("M-x" . helm-M-x)
    ("C-x C-f" . 'helm-find-files)))
 
-;; Auto-complete
-;; (use-package auto-complete
-;;   :commands auto-complete-mode
-;;   :init
-;;   (auto-complete-mode 1))
-
 ;; Company
 (use-package company
   :init
