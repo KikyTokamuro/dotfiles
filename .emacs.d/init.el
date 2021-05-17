@@ -91,19 +91,33 @@
    ("C-x C-f" . 'helm-find-files)))
 
 ;; Auto-complete
-(use-package auto-complete
-  :commands auto-complete-mode
-  :init
-  (auto-complete-mode 1))
+;; (use-package auto-complete
+;;   :commands auto-complete-mode
+;;   :init
+;;   (auto-complete-mode 1))
 
-;; Go-mode
+;; Company
+(use-package company
+  :init
+  (global-company-mode))
+
+;; Company-go
+(use-package company-go
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-go)))
+
+;; Sly (Common Lisp)
+(use-package sly
+  :init
+  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl"))
+
+;; Go-mode (Golang)
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode)
   :init
   (setq gofmt-command "goimports"
 	indent-tabs-mode t)
-  (use-package go-autocomplete)
-  (auto-complete-mode)
   :config
   (add-hook 'before-save-hook 'gofmt-before-save)
   :bind
