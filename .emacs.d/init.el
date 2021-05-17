@@ -74,6 +74,14 @@
   :init
   (smooth-scrolling-mode 1))
 
+;; Dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-items '((recents . 10)))
+  (dashboard-setup-startup-hook))
+
 ;; Helm
 (use-package helm
   :init
