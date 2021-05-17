@@ -104,7 +104,7 @@
 ;; Sly (Common Lisp)
 (use-package sly
   :init
-  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl"))
+  (setq inferior-lisp-program "sbcl"))
 
 ;; Go-mode (Golang)
 (use-package go-mode
