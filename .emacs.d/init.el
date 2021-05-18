@@ -63,6 +63,9 @@
 ;; Clipboard settings
 (setq x-select-enable-clipboard t)
 
+;; Disable backup files
+(setq make-backup-files nil)
+
 ;; Color theme
 (load-theme 'nord t)
 
@@ -81,6 +84,16 @@
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((recents . 10)))
   (dashboard-setup-startup-hook))
+
+;; Dired-sidebar
+(use-package dired-sidebar
+  :ensure t
+  :bind
+  (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :commands
+  (dired-sidebar-toggle-sidebar)
+  :config
+  (setq dired-sidebar-width 25))
 
 ;; Helm
 (use-package helm

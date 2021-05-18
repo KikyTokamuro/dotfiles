@@ -9,7 +9,8 @@
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(company-go sly dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   (quote
+    (dired-sidebar company-go sly dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 
