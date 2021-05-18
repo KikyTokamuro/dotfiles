@@ -79,6 +79,17 @@
   :config
   (setq linum-format " %d"))
 
+;; Diminish
+(use-package diminish
+  :ensure t)
+
+;; Which-key
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode)
+  :diminish which-key-mode)
+
 ;; Dashboard
 (use-package dashboard
   :ensure t
@@ -99,6 +110,7 @@
 
 ;; Helm
 (use-package helm
+  :ensure t
   :init
   (setq-default helm-M-x-fuzzy-match t)
   :bind
