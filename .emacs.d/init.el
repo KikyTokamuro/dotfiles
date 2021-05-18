@@ -42,11 +42,6 @@
 ;; Bell off
 (setq ring-bell-function 'ignore)
 
-;; Linum
-(require 'linum)
-(global-linum-mode  t)
-(setq linum-format " %d")
-
 ;; Load average off
 (setq display-time-default-load-average nil)
 
@@ -65,7 +60,7 @@
 
 ;; Disable backup files
 (setq make-backup-files nil)
-
+ 
 ;; Color theme
 (load-theme 'nord t)
 
@@ -76,6 +71,13 @@
 (use-package smooth-scrolling
   :init
   (smooth-scrolling-mode 1))
+
+;; Linum
+(use-package linum
+  :init
+  (global-linum-mode t)
+  :config
+  (setq linum-format " %d"))
 
 ;; Dashboard
 (use-package dashboard
