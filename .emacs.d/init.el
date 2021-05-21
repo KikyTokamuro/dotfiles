@@ -10,14 +10,15 @@
 	     '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Install selected packages 
-(unless (cl-every 'package-installed-p package-selected-packages)
-  (package-refresh-contents)
-  (package-install-selected-packages))
+;; (unless (cl-every 'package-installed-p package-selected-packages)
+;;   (package-refresh-contents)
+;;   (package-install-selected-packages))
 
-;; PATH settings
-(when (memq window-system '(mac ns x))
-  (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
-  (exec-path-from-shell-initialize))
+;; Install use-package
+(dolist (package '(use-package))
+  (unless (package-installed-p package)
+    (package-refresh-contents)
+    (package-install package)))
 
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -61,14 +62,18 @@
 ;; Disable backup files
 (setq make-backup-files nil)
  
-;; Color theme
-(load-theme 'nord t)
-
 ;; Use-package
 (require 'use-package)
 
+;; Nord theme (Colors)
+(use-package nord-theme
+  :ensure t
+  :init
+  (load-theme 'nord t))
+
 ;; Smooth-scrolling
 (use-package smooth-scrolling
+  :ensure t
   :init
   (smooth-scrolling-mode 1))
 
@@ -117,24 +122,30 @@
   (("M-x" . helm-M-x)
    ("C-x C-f" . 'helm-find-files)))
 
+;; Exec-path-from-shell
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
+    (exec-path-from-shell-initialize)))
+
 ;; Company
 (use-package company
+  :ensure t
   :init
   (global-company-mode))
 
 ;; Company-go
 (use-package company-go
+  :ensure t
   :init
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-go)))
 
-;; Sly (Common Lisp)
-(use-package sly
-  :init
-  (setq inferior-lisp-program "sbcl"))
-
 ;; Go-mode (Golang)
 (use-package go-mode
+  :ensure t
   :mode ("\\.go\\'" . go-mode)
   :init
   (setq gofmt-command "goimports"
@@ -154,3 +165,24 @@
   :ensure t
   :hook
   (go-mode . go-guru-hl-identifier-mode))
+
+;; Tuareg
+(use-package tuareg
+  :mode
+  ("\\.ml[ily]?$" . tuareg-mode))
+
+;; Merlin (Ocaml)
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+    (autoload 'merlin-mode "merlin" nil t nil)
+    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (add-hook 'caml-mode-hook 'merlin-mode t)
+    (setq merlin-command 'opam)))
+
+(use-package utop
+  :diminish utop-minor-mode
+  :config
+  (setq utop-command "opam config exec -- utop -emacs")
+  :hook
+  (tuareg-mode . utop-minor-mode))
