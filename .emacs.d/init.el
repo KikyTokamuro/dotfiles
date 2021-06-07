@@ -30,7 +30,7 @@
 
 ;; Electric-modes settings
 (electric-pair-mode    1)
-(electric-indent-mode -1)
+(electric-indent-mode  1)
 
 ;; Delete selection
 (delete-selection-mode t)
@@ -166,6 +166,11 @@
   :hook
   (go-mode . go-guru-hl-identifier-mode))
 
+;; Sly (Common Lisp)
+(use-package sly
+  :init
+  (setq inferior-lisp-program "sbcl"))
+
 ;; Tuareg
 (use-package tuareg
   :mode
@@ -180,9 +185,48 @@
     (add-hook 'caml-mode-hook 'merlin-mode t)
     (setq merlin-command 'opam)))
 
+;; Utop
 (use-package utop
   :diminish utop-minor-mode
   :config
   (setq utop-command "opam config exec -- utop -emacs")
   :hook
   (tuareg-mode . utop-minor-mode))
+
+;; Irony
+(use-package irony
+  :bind
+  (:map irony-mode-map
+        ([remap completion-at-point] . counsel-irony)
+        ([remap complete-symbol] . counsel-irony))
+  :config
+  (irony-cdb-autosetup-compile-options)
+  (setq c-basic-offset 4)
+  (c-set-offset 'substatement-open 0)
+  :hook
+  ((c-mode c++-mode) . irony-mode))
+
+;; Flycheck-irony
+(use-package flycheck-irony
+  :after flycheck
+  :hook
+  (c-mode . flycheck-irony-setup)
+  (c++-mode . (lambda ()
+                (flycheck-irony-setup)
+                (setq flycheck-clang-language-standard "c++11")
+                (setq irony-additional-clang-options '("-std=c++11")))))
+
+;; Company-c-headers
+(use-package company-c-headers
+  :hook
+  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-c-headers))))
+
+;; Company-irony
+(use-package company-irony
+  :hook
+  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony))))
+
+;; Company-irony-c-headers
+(use-package company-irony-c-headers
+  :hook
+  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony-c-headers))))

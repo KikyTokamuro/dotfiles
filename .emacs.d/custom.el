@@ -6,10 +6,12 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
+ '(custom-safe-themes
+   '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(utop tuareg diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   '(company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly utop tuareg diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 
