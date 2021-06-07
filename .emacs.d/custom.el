@@ -11,7 +11,7 @@
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly utop tuareg diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   '(vscode-icon company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly utop tuareg diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 

@@ -79,10 +79,11 @@
 
 ;; Linum
 (use-package linum
-  :init
-  (global-linum-mode t)
+  ;; :init
+  ;; (global-linum-mode t)
   :config
-  (setq linum-format " %d"))
+  (setq linum-format " %d")
+  (add-hook 'prog-mode-hook 'linum-mode))
 
 ;; Diminish
 (use-package diminish
@@ -103,6 +104,10 @@
   (setq dashboard-items '((recents . 10)))
   (dashboard-setup-startup-hook))
 
+;; Vscode-icon
+(use-package vscode-icon
+  :ensure t)
+
 ;; Dired-sidebar
 (use-package dired-sidebar
   :ensure t
@@ -111,6 +116,7 @@
   :commands
   (dired-sidebar-toggle-sidebar)
   :config
+  (setq dired-sidebar-theme 'vscode) 
   (setq dired-sidebar-width 25))
 
 ;; Helm
