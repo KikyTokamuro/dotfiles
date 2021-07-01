@@ -7,11 +7,12 @@
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes
-   '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
+   '("d0fd069415ef23ccc21ccb0e54d93bdbb996a6cce48ffce7f810826bb243502c" "ffba0482d3548c9494e84c1324d527f73ea4e43fff8dfd0e48faa8fc6d5c2bc7" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
+ '(haskell-stylish-on-save t)
  '(package-selected-packages
-   '(vscode-icon company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly utop tuareg diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   '(espresso-theme vscode-icon company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 

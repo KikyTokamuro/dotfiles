@@ -9,11 +9,6 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
 
-;; Install selected packages 
-;; (unless (cl-every 'package-installed-p package-selected-packages)
-;;   (package-refresh-contents)
-;;   (package-install-selected-packages))
-
 ;; Install use-package
 (dolist (package '(use-package))
   (unless (package-installed-p package)
@@ -65,11 +60,15 @@
 ;; Use-package
 (require 'use-package)
 
-;; Nord theme (Colors)
+;; Nord theme
 (use-package nord-theme
+  :ensure t)
+
+;; Espresso Theme
+(use-package espresso-theme
   :ensure t
   :init
-  (load-theme 'nord t))
+  (load-theme 'espresso t))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -212,6 +211,12 @@
   :hook
   ((c-mode c++-mode) . irony-mode))
 
+;; Flycheck
+(use-package flycheck
+  :diminish flycheck-mode
+  :config
+  (global-flycheck-mode))
+
 ;; Flycheck-irony
 (use-package flycheck-irony
   :after flycheck
@@ -236,3 +241,4 @@
 (use-package company-irony-c-headers
   :hook
   ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony-c-headers))))
+
