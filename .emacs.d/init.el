@@ -242,3 +242,10 @@
   :hook
   ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony-c-headers))))
 
+;; Geiser
+(use-package geiser-racket
+  :mode
+  ("\\.scm\\'" . geiser-mode)
+  ("\\.rkt\\'" . geiser-mode)
+  :config
+  (setq geiser-active-implementations '(racket)))
