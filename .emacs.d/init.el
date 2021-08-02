@@ -48,9 +48,6 @@
 ;; Indent settings
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; Buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 ;; Clipboard settings
 (setq x-select-enable-clipboard t)
 
@@ -59,10 +56,6 @@
  
 ;; Use-package
 (require 'use-package)
-
-;; Nord theme
-(use-package nord-theme
-  :ensure t)
 
 ;; Espresso Theme
 (use-package espresso-theme
@@ -100,7 +93,7 @@
   :ensure t
   :config
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((recents . 10)))
+  (setq dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
 ;; Vscode-icon
@@ -125,7 +118,8 @@
   (setq-default helm-M-x-fuzzy-match t)
   :bind
   (("M-x" . helm-M-x)
-   ("C-x C-f" . 'helm-find-files)))
+   ("C-x C-f" . 'helm-find-files)
+   ("C-x C-b" . 'helm-buffers-list)))
 
 ;; Exec-path-from-shell
 (use-package exec-path-from-shell
@@ -242,10 +236,21 @@
   :hook
   ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony-c-headers))))
 
-;; Geiser
+;; Geiser-racket
 (use-package geiser-racket
   :mode
   ("\\.scm\\'" . geiser-mode)
   ("\\.rkt\\'" . geiser-mode)
   :config
   (setq geiser-active-implementations '(racket)))
+
+;; Eww-lnum
+(use-package eww-lnum
+  :ensure t)
+
+;; Eww
+(use-package eww
+  :bind
+  (:map eww-mode-map
+   ("f" . eww-lnum-follow)))
+
