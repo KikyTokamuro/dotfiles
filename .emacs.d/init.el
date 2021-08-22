@@ -96,20 +96,15 @@
   (setq dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
-;; Vscode-icon
-(use-package vscode-icon
-  :ensure t)
-
-;; Dired-sidebar
-(use-package dired-sidebar
+;; Neotree
+(use-package neotree
   :ensure t
   :bind
-  (("C-x C-n" . dired-sidebar-toggle-sidebar))
-  :commands
-  (dired-sidebar-toggle-sidebar)
-  :config
-  (setq dired-sidebar-theme 'vscode) 
-  (setq dired-sidebar-width 25))
+  (("C-x C-n" . neotree-toggle))
+  :init
+  (setq neo-window-fixed-size nil)
+  (setq neo-window-width 25)
+  (setq neo-smart-open t))
 
 ;; Helm
 (use-package helm
