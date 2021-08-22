@@ -12,7 +12,7 @@
  '(global-display-line-numbers-mode t)
  '(haskell-stylish-on-save t)
  '(package-selected-packages
-   '(geiser-racket espresso-theme vscode-icon company-irony-c-headers company-irony company-c-headers flycheck-irony irony sly diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   '(## ccls company-lsp lsp-ui lsp-mode geiser-guile eww-lnum espresso-theme vscode-icon sly diminish which-key dired-sidebar company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 

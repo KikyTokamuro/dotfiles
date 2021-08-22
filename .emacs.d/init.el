@@ -57,11 +57,11 @@
 ;; Use-package
 (require 'use-package)
 
-;; Espresso Theme
-(use-package espresso-theme
+;; Nord theme (Colors)
+(use-package nord-theme
   :ensure t
   :init
-  (load-theme 'espresso t))
+  (load-theme 'nord t))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -192,57 +192,38 @@
   :hook
   (tuareg-mode . utop-minor-mode))
 
-;; Irony
-(use-package irony
-  :bind
-  (:map irony-mode-map
-        ([remap completion-at-point] . counsel-irony)
-        ([remap complete-symbol] . counsel-irony))
-  :config
-  (irony-cdb-autosetup-compile-options)
-  (setq c-basic-offset 4)
-  (c-set-offset 'substatement-open 0)
-  :hook
-  ((c-mode c++-mode) . irony-mode))
-
 ;; Flycheck
 (use-package flycheck
   :diminish flycheck-mode
   :config
   (global-flycheck-mode))
 
-;; Flycheck-irony
-(use-package flycheck-irony
-  :after flycheck
-  :hook
-  (c-mode . flycheck-irony-setup)
-  (c++-mode . (lambda ()
-                (flycheck-irony-setup)
-                (setq flycheck-clang-language-standard "c++11")
-                (setq irony-additional-clang-options '("-std=c++11")))))
+;; Lsp-mode
+(use-package lsp-mode
+  :commands lsp
+  :ensure t)
 
-;; Company-c-headers
-(use-package company-c-headers
-  :hook
-  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-c-headers))))
+;; Lsp-ui
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :ensure t)
 
-;; Company-irony
-(use-package company-irony
+;; Ccls
+(use-package ccls
+  :ensure t
+  :config
+  (setq ccls-executable "ccls")
+  (setq lsp-prefer-flymake nil)
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :hook
-  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony))))
+  ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
 
-;; Company-irony-c-headers
-(use-package company-irony-c-headers
-  :hook
-  ((c-mode c++-mode) . (lambda () (add-to-list 'company-backends 'company-irony-c-headers))))
-
-;; Geiser-racket
-(use-package geiser-racket
+;; Geiser-guile
+(use-package geiser-guile
   :mode
   ("\\.scm\\'" . geiser-mode)
-  ("\\.rkt\\'" . geiser-mode)
   :config
-  (setq geiser-active-implementations '(racket)))
+  (setq geiser-active-implementations '(guile)))
 
 ;; Eww-lnum
 (use-package eww-lnum
