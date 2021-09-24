@@ -57,11 +57,11 @@
 ;; Use-package
 (require 'use-package)
 
-;; Nord theme (Colors)
-(use-package nord-theme
+;; Cloud theme (Colors)
+(use-package cloud-theme
   :ensure t
-  :init
-  (load-theme 'nord t))
+  :config
+  (load-theme 'cloud t))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
