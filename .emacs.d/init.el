@@ -69,6 +69,11 @@
   :init
   (smooth-scrolling-mode 1))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
+
 ;; Linum
 (use-package linum
   ;; :init
