@@ -57,11 +57,12 @@
 ;; Use-package
 (require 'use-package)
 
-;; Cloud theme (Colors)
-(use-package cloud-theme
+;; Solarized theme (Colors)
+(use-package solarized-theme
   :ensure t
   :config
-  (load-theme 'cloud t))
+  (load-theme 'solarized-selenized-light t)
+  (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -126,7 +127,7 @@
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
-    (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
+    (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
     (exec-path-from-shell-initialize)))
 
 ;; Company
@@ -201,7 +202,9 @@
 ;; Lsp-mode
 (use-package lsp-mode
   :commands lsp
-  :ensure t)
+  :ensure t
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil))
 
 ;; Lsp-ui
 (use-package lsp-ui
@@ -224,6 +227,20 @@
   ("\\.scm\\'" . geiser-mode)
   :config
   (setq geiser-active-implementations '(guile)))
+
+;; Perl
+(use-package cperl-mode
+  :defer t
+  :init (defalias 'perl-mode 'cperl-mode)
+  :config
+  (setq cperl-highlight-variables-indiscriminately t
+	cperl-indent-level 4
+        cperl-tab-always-indent nil
+        cperl-continued-statement-offset 0
+        cperl-indent-parens-as-block t
+        cperl-close-paren-offset -4
+        cperl-electric-keywords t
+        cperl-label-offset 0))
 
 ;; Eww-lnum
 (use-package eww-lnum
