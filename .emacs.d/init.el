@@ -1,4 +1,13 @@
+;;; init.el --- Emacs init
+;; Copyright (C) 2021 Arhangelsky Daniil (Kiky Tokamuro)
+;; Author: Arhangelsky Daniil (Kiky Tokamuro) <kiky.tokamuro@yandex.ru>
+;;; Commentary:
+;;; Code:
+
 (package-initialize)
+
+;; Utils
+(load-file "~/.emacs.d/utils.el")
 
 ;; Init file for custom settings
 (setq custom-file "~/.emacs.d/custom.el")
@@ -250,5 +259,6 @@
 (use-package eww
   :bind
   (:map eww-mode-map
-   ("f" . eww-lnum-follow)))
+	("f" . eww-lnum-follow)))
 
+;;; init.el ends here
