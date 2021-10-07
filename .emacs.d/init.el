@@ -13,6 +13,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
 
+;; Set frame maximized
+(toggle-frame-maximized)
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
