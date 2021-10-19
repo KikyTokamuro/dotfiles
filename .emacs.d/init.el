@@ -16,6 +16,10 @@
 ;; Set frame maximized
 (toggle-frame-maximized)
 
+;; Window title
+(setq frame-title-format
+      '("%b@" (:eval (or (file-remote-p default-directory 'host) system-name)) " — Emacs"))
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
