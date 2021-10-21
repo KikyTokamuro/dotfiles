@@ -268,4 +268,18 @@
   (:map eww-mode-map
 	("f" . eww-lnum-follow)))
 
+;; Elfeed -- feed reader
+(use-package elfeed
+  :config
+  (setq elfeed-feeds
+	'("http://nullprogram.com/feed/"
+	  "https://planet.emacslife.com/atom.xml"
+	  "https://lobste.rs/rss"
+	  "https://hnrss.org/newest"
+	  "https://www.reddit.com/r/programming/.rss"
+	  "https://www.reddit.com/r/lisp/.rss"
+	  "https://www.reddit.com/r/emacs/.rss"
+	  "https://www.reddit.com/r/perl/.rss"
+	  "https://reddit.com/r/lispmachine/.rss")))
+
 ;;; init.el ends here
