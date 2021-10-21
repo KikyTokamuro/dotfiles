@@ -13,13 +13,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
 
-;; Set frame maximized
-(toggle-frame-maximized)
-
-;; Window title
-(setq frame-title-format
-      '("%b@" (:eval (or (file-remote-p default-directory 'host) system-name)) " — Emacs"))
-
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -30,6 +23,17 @@
   (unless (package-installed-p package)
     (package-refresh-contents)
     (package-install package)))
+
+;;;;
+;;;; Settings
+;;;;
+
+;; Set frame maximized
+(toggle-frame-maximized)
+
+;; Window title
+(setq frame-title-format
+      '("%b@" (:eval (or (file-remote-p default-directory 'host) system-name)) " — Emacs"))
 
 ;; Inhibit startup/splash screen
 (setq inhibit-splash-screen   t)
@@ -73,6 +77,10 @@
 ;; Use-package
 (require 'use-package)
 
+;;;;
+;;;; UI and UI tools
+;;;;
+
 ;; Solarized theme (Colors)
 (use-package solarized-theme
   :ensure t
@@ -86,6 +94,7 @@
   :init
   (smooth-scrolling-mode 1))
 
+;; Rainbow delimiters
 (use-package rainbow-delimiters
   :ensure t
   :hook
@@ -137,6 +146,10 @@
   (("M-x" . helm-M-x)
    ("C-x C-f" . 'helm-find-files)
    ("C-x C-b" . 'helm-buffers-list)))
+
+;;;;
+;;;; Programming
+;;;;
 
 ;; Exec-path-from-shell
 (use-package exec-path-from-shell
@@ -258,6 +271,10 @@
         cperl-electric-keywords t
         cperl-label-offset 0))
 
+;;;;
+;;;; Web tools
+;;;;
+
 ;; Eww-lnum
 (use-package eww-lnum
   :ensure t)
@@ -270,6 +287,7 @@
 
 ;; Elfeed -- feed reader
 (use-package elfeed
+  :ensure t
   :config
   (setq elfeed-feeds
 	'("http://nullprogram.com/feed/"
@@ -281,5 +299,16 @@
 	  "https://www.reddit.com/r/emacs/.rss"
 	  "https://www.reddit.com/r/perl/.rss"
 	  "https://reddit.com/r/lispmachine/.rss")))
+
+;; Google translate
+(use-package google-translate
+  :ensure t
+  :functions (google-translate--search-tkk)
+  :custom
+  (google-translate-backend-method 'curl)
+  :config
+  (defun google-translate--search-tkk ()
+    "Search TKK."
+    (list 430675 2721866130)))
 
 ;;; init.el ends here
