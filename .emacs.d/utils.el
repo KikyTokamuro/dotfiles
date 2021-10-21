@@ -7,7 +7,16 @@
 (defun system-uptime ()
   "Get system uptime."
   (interactive)
-  (message (shell-command-to-string "uptime")))
+  (message
+   (replace-regexp-in-string "\n$" ""
+			     (shell-command-to-string "uptime"))))
+
+(defun current-weather ()
+  "Get current weather."
+  (interactive)
+  (message
+   (replace-regexp-in-string "\n$" ""
+			     (shell-command-to-string "curl -s 'wttr.in/?format=3'"))))
 
 (provide 'utils)
 
