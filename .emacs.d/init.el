@@ -73,7 +73,7 @@
 
 ;; Disable backup files
 (setq make-backup-files nil)
- 
+
 ;; Use-package
 (require 'use-package)
 
@@ -158,6 +158,11 @@
   (when (memq window-system '(mac ns x))
     (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
     (exec-path-from-shell-initialize)))
+
+;; Web-beautify
+;;; Install: npm -g install js-beautify
+(use-package web-beautify
+  :ensure t)
 
 ;; Company
 (use-package company
