@@ -276,6 +276,17 @@
         cperl-electric-keywords t
         cperl-label-offset 0))
 
+;; Elixir
+(use-package elixir-mode
+  :mode
+  ("\\.ex\\'" . elixir-mode)
+  :init
+  (add-to-list 'exec-path (expand-file-name "~/elixir-ls/release"))
+  :config
+  (add-hook 'before-save-hook 'elixir-format)
+  :hook
+  (elixir-mode . lsp))
+
 ;;;;
 ;;;; Web tools
 ;;;;

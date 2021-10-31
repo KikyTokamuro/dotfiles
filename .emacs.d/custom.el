@@ -12,7 +12,7 @@
  '(global-display-line-numbers-mode t)
  '(haskell-stylish-on-save t)
  '(package-selected-packages
-   '(solarized-theme cloud-theme rainbow-delimiters paredit neotree ## ccls company-lsp lsp-ui lsp-mode geiser-guile eww-lnum espresso-theme vscode-icon sly diminish which-key company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
+   '(elixir-mode web-beautify google-translate elfeed solarized-theme cloud-theme rainbow-delimiters paredit neotree ## ccls company-lsp lsp-ui lsp-mode geiser-guile eww-lnum espresso-theme vscode-icon sly diminish which-key company-go dashboard use-package company helm zzz-to-char smooth-scrolling go-guru nord-theme go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
