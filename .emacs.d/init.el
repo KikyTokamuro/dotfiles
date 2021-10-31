@@ -314,7 +314,17 @@
 	  "https://www.reddit.com/r/lisp/.rss"
 	  "https://www.reddit.com/r/emacs/.rss"
 	  "https://www.reddit.com/r/perl/.rss"
-	  "https://reddit.com/r/lispmachine/.rss")))
+	  "https://reddit.com/r/lispmachine/.rss"
+	  "https://reddit.com/r/rakulang/.rss"
+	  "https://reddit.com/r/C_Programming/.rss"
+	  "https://reddit.com/r/cpp/.rss"
+	  "https://reddit.com/r/coding/.rss"
+	  "https://reddit.com/r/openbsd/.rss"
+	  "https://reddit.com/r/freebsd/.rss"
+	  "https://reddit.com/r/scheme/.rss"
+	  "https://reddit.com/r/PHP/.rss"
+	  "https://reddit.com/r/ProgrammingLanguages/.rss"
+	  "https://reddit.com/r/ada/.rss")))
 
 ;; Google translate
 (use-package google-translate
