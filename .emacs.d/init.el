@@ -274,7 +274,8 @@
         cperl-indent-parens-as-block t
         cperl-close-paren-offset -4
         cperl-electric-keywords t
-        cperl-label-offset 0))
+        cperl-label-offset 0)
+  (add-hook 'before-save-hook 'perltidy-buffer))
 
 ;; Elixir
 (use-package elixir-mode
@@ -324,7 +325,8 @@
 	  "https://reddit.com/r/scheme/.rss"
 	  "https://reddit.com/r/PHP/.rss"
 	  "https://reddit.com/r/ProgrammingLanguages/.rss"
-	  "https://reddit.com/r/ada/.rss")))
+	  "https://reddit.com/r/elixir/.rss"
+	  "https://reddit.com/r/erlang/.rss")))
 
 ;; Google translate
 (use-package google-translate
