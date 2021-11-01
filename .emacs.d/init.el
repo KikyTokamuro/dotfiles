@@ -275,7 +275,9 @@
         cperl-close-paren-offset -4
         cperl-electric-keywords t
         cperl-label-offset 0)
-  (add-hook 'before-save-hook 'perltidy-buffer))
+  (add-hook 'before-save-hook 'perltidy-buffer)
+  :hook
+  (cperl-mode . lsp))
 
 ;; Elixir
 (use-package elixir-mode
