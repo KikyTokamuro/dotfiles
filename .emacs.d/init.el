@@ -255,12 +255,19 @@
   :hook
   ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
 
-;; Geiser-guile
-(use-package geiser-guile
+;; Racket
+(use-package racket-mode
   :mode
-  ("\\.scm\\'" . geiser-mode)
-  :config
-  (setq geiser-active-implementations '(guile)))
+  ("\\.rkt[dl]?\\'" . racket-mode)
+  :hook
+  (racket-mode . racket-xp-mode))
+
+;; Geiser-guile
+;; (use-package geiser-guile
+;;   :mode
+;;   ("\\.scm\\'" . geiser-mode)
+;;   :config
+;;   (setq geiser-active-implementations '(guile)))
 
 ;; Perl
 (use-package cperl-mode
