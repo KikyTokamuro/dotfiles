@@ -106,7 +106,8 @@
   ;; (global-linum-mode t)
   :config
   (setq linum-format " %d")
-  (add-hook 'prog-mode-hook 'linum-mode))
+  :hook
+  (prog-mode . linum-mode))
 
 ;; Diminish
 (use-package diminish
@@ -183,9 +184,9 @@
   :mode ("\\.go\\'" . go-mode)
   :init
   (setq gofmt-command "goimports"
-	indent-tabs-mode t)
-  :config
-  (add-hook 'before-save-hook 'gofmt-before-save)
+        indent-tabs-mode t)
+  :hook
+  (go-mode . (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
   :bind
   (:map go-mode-map
 	("\C-c \C-c" . compile)
@@ -282,9 +283,9 @@
         cperl-close-paren-offset -4
         cperl-electric-keywords t
         cperl-label-offset 0)
-  (add-hook 'before-save-hook 'perltidy-buffer)
   :hook
-  (cperl-mode . lsp))
+  (cperl-mode . lsp)
+  (cperl-mode . (lambda () (add-hook 'before-save-hook 'perltidy-buffer))))
 
 ;; Elixir
 (use-package elixir-mode
@@ -292,10 +293,9 @@
   ("\\.ex\\'" . elixir-mode)
   :init
   (add-to-list 'exec-path (expand-file-name "~/elixir-ls/release"))
-  :config
-  (add-hook 'before-save-hook 'elixir-format)
   :hook
-  (elixir-mode . lsp))
+  (elixir-mode . lsp)
+  (elixir-mode . (lambda () (add-hook 'before-save-hook 'elixir-format))))
 
 ;;;;
 ;;;; Web tools
