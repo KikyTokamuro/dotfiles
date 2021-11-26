@@ -184,7 +184,7 @@
   :mode ("\\.go\\'" . go-mode)
   :init
   (setq gofmt-command "goimports"
-        indent-tabs-mode t)
+	indent-tabs-mode t)
   :hook
   (go-mode . (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
   :bind
@@ -296,6 +296,15 @@
   :hook
   (elixir-mode . lsp)
   (elixir-mode . (lambda () (add-hook 'before-save-hook 'elixir-format))))
+
+;; PHP
+(use-package php-mode
+  :ensure t
+  :mode
+  ("\\.php\\'" . php-mode)
+  :hook
+  (php-mode . lsp))
+
 
 ;;;;
 ;;;; Web tools
