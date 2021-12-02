@@ -203,7 +203,7 @@
 
 ;; Sly (Common Lisp)
 (use-package sly
-  :init
+  :config
   (setq inferior-lisp-program "sbcl"))
 
 ;; Tuareg
@@ -230,6 +230,7 @@
 
 ;; Flycheck
 (use-package flycheck
+  :ensure t
   :diminish flycheck-mode
   :config
   (global-flycheck-mode))
@@ -257,18 +258,18 @@
   ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
 
 ;; Racket
-(use-package racket-mode
-  :mode
-  ("\\.rkt[dl]?\\'" . racket-mode)
-  :hook
-  (racket-mode . racket-xp-mode))
-
-;; Geiser-guile
-;; (use-package geiser-guile
+;; (use-package racket-mode
 ;;   :mode
-;;   ("\\.scm\\'" . geiser-mode)
-;;   :config
-;;   (setq geiser-active-implementations '(guile)))
+;;   ("\\.rkt[dl]?\\'" . racket-mode)
+;;   :hook
+;;   (racket-mode . racket-xp-mode))
+
+;; Geiser
+(use-package geiser-guile
+  :mode
+  ("\\.scm\\'" . scheme-mode)
+  :config
+  (setq geiser-active-implementations '(guile)))
 
 ;; Perl
 (use-package cperl-mode
@@ -304,7 +305,6 @@
   ("\\.php\\'" . php-mode)
   :hook
   (php-mode . lsp))
-
 
 ;;;;
 ;;;; Web tools
@@ -342,9 +342,7 @@
 	  "https://reddit.com/r/freebsd/.rss"
 	  "https://reddit.com/r/scheme/.rss"
 	  "https://reddit.com/r/PHP/.rss"
-	  "https://reddit.com/r/ProgrammingLanguages/.rss"
-	  "https://reddit.com/r/elixir/.rss"
-	  "https://reddit.com/r/erlang/.rss")))
+	  "https://reddit.com/r/ProgrammingLanguages/.rss")))
 
 ;; Google translate
 (use-package google-translate
