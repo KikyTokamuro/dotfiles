@@ -29,7 +29,7 @@
 ;;;;
 
 ;; Set frame maximized
-(toggle-frame-maximized)
+;;(toggle-frame-maximized)
 
 ;; Window title
 (setq frame-title-format
@@ -159,6 +159,22 @@
   (when (memq window-system '(mac ns x))
     (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
     (exec-path-from-shell-initialize)))
+
+;; Org-mode
+(use-package org
+  :config
+  (setq org-confirm-babel-evaluate nil)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (perl . t)
+     (C . t)
+     (awk . t)
+     (lisp . t)
+     (scheme . t)
+     (shell . t)
+     (emacs-lisp . t)
+     (js . t))))
 
 ;; Web-beautify
 ;;; Install: npm -g install js-beautify
