@@ -304,6 +304,12 @@
   (cperl-mode . lsp)
   (cperl-mode . (lambda () (add-hook 'before-save-hook 'perltidy-buffer))))
 
+;; Raku
+(use-package raku-mode
+  :defer t
+  :init
+  (defalias 'perl6-mode #'raku-mode))
+
 ;; Elixir
 (use-package elixir-mode
   :mode
