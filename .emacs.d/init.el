@@ -273,13 +273,6 @@
   :hook
   ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
 
-;; Racket
-;; (use-package racket-mode
-;;   :mode
-;;   ("\\.rkt[dl]?\\'" . racket-mode)
-;;   :hook
-;;   (racket-mode . racket-xp-mode))
-
 ;; Geiser
 (use-package geiser-guile
   :mode
@@ -289,7 +282,7 @@
 
 ;; Perl
 (use-package cperl-mode
-  :defer t
+  :ensure t
   :init (defalias 'perl-mode 'cperl-mode)
   :config
   (setq cperl-highlight-variables-indiscriminately t
@@ -303,22 +296,6 @@
   :hook
   (cperl-mode . lsp)
   (cperl-mode . (lambda () (add-hook 'before-save-hook 'perltidy-buffer))))
-
-;; Raku
-(use-package raku-mode
-  :defer t
-  :init
-  (defalias 'perl6-mode #'raku-mode))
-
-;; Elixir
-(use-package elixir-mode
-  :mode
-  ("\\.ex\\'" . elixir-mode)
-  :init
-  (add-to-list 'exec-path (expand-file-name "~/elixir-ls/release"))
-  :hook
-  (elixir-mode . lsp)
-  (elixir-mode . (lambda () (add-hook 'before-save-hook 'elixir-format))))
 
 ;; PHP
 (use-package php-mode
@@ -356,7 +333,6 @@
 	  "https://www.reddit.com/r/emacs/.rss"
 	  "https://www.reddit.com/r/perl/.rss"
 	  "https://reddit.com/r/lispmachine/.rss"
-	  "https://reddit.com/r/rakulang/.rss"
 	  "https://reddit.com/r/C_Programming/.rss"
 	  "https://reddit.com/r/cpp/.rss"
 	  "https://reddit.com/r/coding/.rss"
