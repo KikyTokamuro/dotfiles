@@ -1,5 +1,5 @@
 ;;; init.el --- Emacs init
-;; Copyright (C) 2021 Arhangelsky Daniil (Kiky Tokamuro)
+;; Copyright (C) 2021-2022 Arhangelsky Daniil (Kiky Tokamuro)
 ;; Author: Arhangelsky Daniil (Kiky Tokamuro) <kiky.tokamuro@yandex.ru>
 ;;; Commentary:
 ;;; Code:
@@ -12,6 +12,10 @@
 ;; Init file for custom settings
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
+
+;; Custom themes path
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'robin-hood t)
 
 ;; Packages
 (require 'package)
@@ -82,11 +86,11 @@
 ;;;;
 
 ;; Solarized theme (Colors)
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-selenized-light t)
-  (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'solarized-selenized-light t)
+;;   (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
