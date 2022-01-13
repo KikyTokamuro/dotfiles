@@ -66,7 +66,7 @@
 (setq display-time-default-load-average nil)
 
 ;; Line wrapping
-(setq word-wrap          t)
+(setq word-wrap         t)
 (global-visual-line-mode t)
 
 ;; Indent settings
@@ -85,26 +85,23 @@
 ;;;; UI and UI tools
 ;;;;
 
-;; TabBar
-(use-package tabbar
+;; Centaur-tabs
+(use-package centaur-tabs
   :ensure t
   :config
-  (setq tabbar-background-color "#ECE3CC")
-  (custom-set-faces
-   '(tabbar-default ((t (:inherit tabbar-default :background "#ECE3CC"))))
-   '(tabbar-highlight ((t (:underline nil))))
-   '(tabbar-selected ((t (:foreground "#3B4F64" :background "#FBF3DB"))))
-   '(tabbar-separator ((t (:inherit tabbar-default :background "#ECE3CC"))))
-   '(tabbar-unselected ((t (:foreground "#3B4F64")))))
-  :init
-  (tabbar-mode 1))
+  (setq x-underline-at-descent-line t
+	centaur-tabs-style "bar")
+  (centaur-tabs-mode t))
 
 ;; Solarized theme (Colors)
 (use-package solarized-theme
   :ensure t
   :config
   (load-theme 'solarized-selenized-light t)
-  (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
+  (set-face-attribute 'mode-line nil
+		      :height 1.0
+		      :overline nil
+		      :underline nil))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -120,8 +117,6 @@
 
 ;; Linum
 (use-package linum
-  ;; :init
-  ;; (global-linum-mode t)
   :config
   (setq linum-format " %d")
   :hook
@@ -142,8 +137,8 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((recents . 5)))
+  (setq dashboard-startup-banner 'logo
+	dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
 ;; Neotree
@@ -152,9 +147,9 @@
   :bind
   (("C-x C-n" . neotree-toggle))
   :init
-  (setq neo-window-fixed-size nil)
-  (setq neo-window-width 25)
-  (setq neo-smart-open t))
+  (setq neo-window-fixed-size nil
+	neo-window-width 25
+	neo-smart-open t))
 
 ;; Helm
 (use-package helm
@@ -184,15 +179,15 @@
   (setq org-confirm-babel-evaluate nil)
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((python . t)
-     (perl . t)
-     (C . t)
-     (awk . t)
-     (lisp . t)
-     (scheme . t)
-     (shell . t)
+   '((python     . t)
+     (perl       . t)
+     (C          . t)
+     (awk        . t)
+     (lisp       . t)
+     (scheme     . t)
+     (shell      . t)
      (emacs-lisp . t)
-     (js . t))))
+     (js         . t))))
 
 ;; Web-beautify
 ;;; Install: npm -g install js-beautify
@@ -226,8 +221,8 @@
 	("\C-c \C-c" . compile)
         ("\C-c \C-g" . go-goto-imports)
         ("\C-c \C-k" . godoc)
-        ("M-j" . pop-tag-mark)
-        ("M-k" . godef-jump)))
+        ("M-j"       . pop-tag-mark)
+        ("M-k"       . godef-jump)))
 
 ;; Go-guru
 (use-package go-guru
@@ -285,8 +280,8 @@
 (use-package ccls
   :ensure t
   :config
-  (setq ccls-executable "ccls")
-  (setq lsp-prefer-flymake nil)
+  (setq ccls-executable "ccls"
+	lsp-prefer-flymake nil)
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   :hook
   ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
