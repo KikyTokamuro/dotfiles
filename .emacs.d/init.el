@@ -14,8 +14,8 @@
 (load-file custom-file)
 
 ;; Custom themes path
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'robin-hood t)
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;;(load-theme 'robin-hood t)
 
 ;; Packages
 (require 'package)
@@ -85,12 +85,26 @@
 ;;;; UI and UI tools
 ;;;;
 
+;; TabBar
+(use-package tabbar
+  :ensure t
+  :config
+  (setq tabbar-background-color "#ECE3CC")
+  (custom-set-faces
+   '(tabbar-default ((t (:inherit tabbar-default :background "#ECE3CC"))))
+   '(tabbar-highlight ((t (:underline nil))))
+   '(tabbar-selected ((t (:foreground "#3B4F64" :background "#FBF3DB"))))
+   '(tabbar-separator ((t (:inherit tabbar-default :background "#ECE3CC"))))
+   '(tabbar-unselected ((t (:foreground "#3B4F64")))))
+  :init
+  (tabbar-mode 1))
+
 ;; Solarized theme (Colors)
-;; (use-package solarized-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'solarized-selenized-light t)
-;;   (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-selenized-light t)
+  (set-face-attribute 'mode-line nil :height 1.0 :overline nil :underline nil))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
