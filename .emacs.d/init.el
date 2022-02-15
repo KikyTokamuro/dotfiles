@@ -17,6 +17,11 @@
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'robin-hood t)
 
+;; Run server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -86,12 +91,12 @@
 ;;;;
 
 ;; Centaur-tabs
-(use-package centaur-tabs
-  :ensure t
-  :config
-  (setq x-underline-at-descent-line t
-	centaur-tabs-style "bar")
-  (centaur-tabs-mode t))
+;; (use-package centaur-tabs
+;;   :ensure t
+;;   :config
+;;   (setq x-underline-at-descent-line t
+;; 	centaur-tabs-style "bar")
+;;   (centaur-tabs-mode t))
 
 ;; Solarized theme (Colors)
 (use-package solarized-theme
@@ -315,6 +320,9 @@
   :ensure t
   :mode
   ("\\.php\\'" . php-mode)
+  :init
+  (add-to-list 'load-path "~/.emacs.d/emacs-php-doc-block")
+  (require 'php-doc-block)
   :hook
   (php-mode . lsp))
 
@@ -331,29 +339,6 @@
   :bind
   (:map eww-mode-map
 	("f" . eww-lnum-follow)))
-
-;; Elfeed -- feed reader
-(use-package elfeed
-  :ensure t
-  :config
-  (setq elfeed-feeds
-	'("http://nullprogram.com/feed/"
-	  "https://planet.emacslife.com/atom.xml"
-	  "https://lobste.rs/rss"
-	  "https://hnrss.org/newest"
-	  "https://www.reddit.com/r/programming/.rss"
-	  "https://www.reddit.com/r/lisp/.rss"
-	  "https://www.reddit.com/r/emacs/.rss"
-	  "https://www.reddit.com/r/perl/.rss"
-	  "https://reddit.com/r/lispmachine/.rss"
-	  "https://reddit.com/r/C_Programming/.rss"
-	  "https://reddit.com/r/cpp/.rss"
-	  "https://reddit.com/r/coding/.rss"
-	  "https://reddit.com/r/openbsd/.rss"
-	  "https://reddit.com/r/freebsd/.rss"
-	  "https://reddit.com/r/scheme/.rss"
-	  "https://reddit.com/r/PHP/.rss"
-	  "https://reddit.com/r/ProgrammingLanguages/.rss")))
 
 ;; Google translate
 (use-package google-translate
