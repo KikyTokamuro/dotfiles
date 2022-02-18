@@ -90,14 +90,6 @@
 ;;;; UI and UI tools
 ;;;;
 
-;; Centaur-tabs
-;; (use-package centaur-tabs
-;;   :ensure t
-;;   :config
-;;   (setq x-underline-at-descent-line t
-;; 	centaur-tabs-style "bar")
-;;   (centaur-tabs-mode t))
-
 ;; Solarized theme (Colors)
 (use-package solarized-theme
   :ensure t
@@ -142,7 +134,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner 'logo
+  (setq dashboard-startup-banner 'official
 	dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
@@ -174,8 +166,9 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
+  (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
+  :init
   (when (memq window-system '(mac ns x))
-    (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
     (exec-path-from-shell-initialize)))
 
 ;; Org-mode
@@ -240,28 +233,6 @@
   :config
   (setq inferior-lisp-program "sbcl"))
 
-;; Tuareg
-(use-package tuareg
-  :mode
-  ("\\.ml[ily]?$" . tuareg-mode))
-
-;; Merlin (Ocaml)
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-  (when (and opam-share (file-directory-p opam-share))
-    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-    (autoload 'merlin-mode "merlin" nil t nil)
-    (add-hook 'tuareg-mode-hook 'merlin-mode t)
-    (add-hook 'caml-mode-hook 'merlin-mode t)
-    (setq merlin-command 'opam)))
-
-;; Utop
-(use-package utop
-  :diminish utop-minor-mode
-  :config
-  (setq utop-command "opam config exec -- utop -emacs")
-  :hook
-  (tuareg-mode . utop-minor-mode))
-
 ;; Flycheck
 (use-package flycheck
   :ensure t
@@ -311,6 +282,11 @@
         cperl-close-paren-offset -4
         cperl-electric-keywords t
         cperl-label-offset 0)
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-stdio-connection '("node" "/home/kiky/work/PerlNavigator/server/out/server.js" "--stdio"))
+  ;; 		    :major-modes '(cperl-mode perl-mode)
+  ;; 		    :priority 10
+  ;; 		    :server-id 'perl-ls))
   :hook
   (cperl-mode . lsp)
   (cperl-mode . (lambda () (add-hook 'before-save-hook 'perltidy-buffer))))
