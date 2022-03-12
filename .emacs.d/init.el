@@ -175,6 +175,7 @@
 (use-package org
   :config
   (setq org-confirm-babel-evaluate nil)
+  (setq org-html-validation-link nil)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python     . t)
