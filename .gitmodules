@@ -1,0 +1,3 @@
+[submodule ".emacs.d/emacs-php-doc-block"]
+	path = .emacs.d/emacs-php-doc-block
+	url = git@github.com:moskalyovd/emacs-php-doc-block.git
