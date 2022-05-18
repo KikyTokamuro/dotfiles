@@ -98,7 +98,21 @@
   (set-face-attribute 'mode-line nil
 		      :height 1.0
 		      :overline nil
+		      :underline nil)
+  (set-face-attribute 'mode-line-inactive nil
+		      :height 1.0
+		      :overline nil
 		      :underline nil))
+
+;; Telephone-line
+(use-package telephone-line
+  :ensure t
+  :config
+  (setq telephone-line-primary-left-separator 'telephone-line-nil
+	telephone-line-secondary-left-separator 'telephone-line-nil
+	telephone-line-primary-right-separator 'telephone-line-identity-left
+	telephone-line-secondary-right-separator 'telephone-line-identity-hollow-left)
+  (telephone-line-mode 1))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -134,7 +148,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner 'official
+  (setq dashboard-startup-banner 'logo
 	dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
@@ -168,7 +182,7 @@
   :config
   (setq exec-path-from-shell-variables '("PATH" "GOPATH" "PERL5LIB"))
   :init
-  (when (memq window-system '(mac ns x))
+  (when (daemonp)
     (exec-path-from-shell-initialize)))
 
 ;; Org-mode
