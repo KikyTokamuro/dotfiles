@@ -14,8 +14,7 @@
 (load-file custom-file)
 
 ;; Custom themes path
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;;(load-theme 'robin-hood t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Run server
 (require 'server)
@@ -110,8 +109,8 @@
   :config
   (setq telephone-line-primary-left-separator 'telephone-line-nil
 	telephone-line-secondary-left-separator 'telephone-line-nil
-	telephone-line-primary-right-separator 'telephone-line-identity-left
-	telephone-line-secondary-right-separator 'telephone-line-identity-hollow-left)
+	telephone-line-primary-right-separator 'telephone-line-nil
+	telephone-line-secondary-right-separator 'telephone-line-nil)
   (telephone-line-mode 1))
 
 ;; Smooth-scrolling
@@ -315,6 +314,29 @@
   (require 'php-doc-block)
   :hook
   (php-mode . lsp))
+
+;; Tuareg (Ocaml)
+(use-package tuareg-mode
+  :mode
+  ("\\.ml[ily]?$" . tuareg-mode)
+  :init
+  (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+      (setq merlin-command "opam exec ocamlmerlin")))
+  :hook
+  (tuareg-mode . merlin-mode))
+
+;; Utop (Ocaml)
+(use-package utop
+  :diminish utop-minor-mode
+  :config
+  (setq utop-command "opam exec -- utop -emacs")
+  :hook
+  (tuareg-mode . utop-minor-mode))
+
+;; Company for Merlin
+(use-package merlin-company)
 
 ;;;;
 ;;;; Web tools
