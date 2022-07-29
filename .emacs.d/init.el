@@ -82,6 +82,11 @@
 ;; Disable backup files
 (setq make-backup-files nil)
 
+;; Mouse scrolling
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 3)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+
 ;; Use-package
 (require 'use-package)
 
