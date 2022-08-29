@@ -217,35 +217,19 @@
   :init
   (global-company-mode))
 
-;; Company-go
-(use-package company-go
-  :ensure t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-go)))
+;;; Go-mode hooks
+(defun my-go-hooks ()
+  "Golang hooks."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t)
+  (lsp))
 
-;; Go-mode (Golang)
+;; Go-mode
 (use-package go-mode
   :ensure t
   :mode ("\\.go\\'" . go-mode)
-  :init
-  (setq gofmt-command "goimports"
-	indent-tabs-mode t)
   :hook
-  (go-mode . (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
-  :bind
-  (:map go-mode-map
-	("\C-c \C-c" . compile)
-        ("\C-c \C-g" . go-goto-imports)
-        ("\C-c \C-k" . godoc)
-        ("M-j"       . pop-tag-mark)
-        ("M-k"       . godef-jump)))
-
-;; Go-guru
-(use-package go-guru
-  :ensure t
-  :hook
-  (go-mode . go-guru-hl-identifier-mode))
+  (go-mode . my-go-hooks))
 
 ;; Sly (Common Lisp)
 (use-package sly
