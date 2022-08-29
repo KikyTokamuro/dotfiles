@@ -217,7 +217,7 @@
   :init
   (global-company-mode))
 
-;;; Go-mode hooks
+;; Go-mode hooks
 (defun my-go-hooks ()
   "Golang hooks."
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
