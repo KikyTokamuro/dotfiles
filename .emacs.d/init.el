@@ -162,6 +162,17 @@
   :bind
   (("C-x C-n" . treemacs)))
 
+;; Centaur-tabs
+(use-package centaur-tabs
+  :ensure t
+  :demand
+  :config
+  (setq centaur-tabs-set-bar 'over
+	 centaur-tabs-set-modified-marker t
+	 centaur-tabs-modifier-marker ".")
+  (centaur-tabs-headline-match)
+  (centaur-tabs-mode t))
+
 ;; Helm
 (use-package helm
   :ensure t
