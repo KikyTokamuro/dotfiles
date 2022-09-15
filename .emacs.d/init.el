@@ -156,15 +156,11 @@
 	dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook))
 
-;; Neotree
-(use-package neotree
+;; Treemacs
+(use-package treemacs
   :ensure t
   :bind
-  (("C-x C-n" . neotree-toggle))
-  :init
-  (setq neo-window-fixed-size nil
-	neo-window-width 25
-	neo-smart-open t))
+  (("C-x C-n" . treemacs)))
 
 ;; Helm
 (use-package helm
