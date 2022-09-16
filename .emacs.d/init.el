@@ -90,6 +90,12 @@
 ;; Use-package
 (require 'use-package)
 
+;; Flyspell
+(use-package flyspell
+  :ensure t
+  :config
+  (setq ispell-program-name "aspell"))
+
 ;;;;
 ;;;; UI and UI tools
 ;;;;
