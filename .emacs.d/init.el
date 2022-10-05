@@ -100,6 +100,11 @@
 ;;;; UI and UI tools
 ;;;;
 
+;; Highlight current line
+(use-package hl-line
+  :ensure t
+  :hook ((prog-mode org-mode) . hl-line-mode))
+
 ;; Solarized theme (Colors)
 (use-package solarized-theme
   :ensure t
