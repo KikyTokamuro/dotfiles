@@ -87,9 +87,16 @@
   :ensure t
   :demand
   :config
+  (defun my-hide-centaur-tabs (buffer)
+    "Hide tabs with * in BUFFER name."
+    (let ((name (format "%s" buffer)))
+      (or
+       (string-prefix-p "*" name)
+       (centaur-tabs-hide-tab buffer))))
   (setq centaur-tabs-set-bar 'over
 	 centaur-tabs-set-modified-marker t
-	 centaur-tabs-modifier-marker ".")
+	 centaur-tabs-modifier-marker "."
+	 centaur-tabs-hide-tab-function 'my-hide-centaur-tabs)
   (centaur-tabs-headline-match)
   (centaur-tabs-mode t))
 
