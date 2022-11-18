@@ -21,6 +21,18 @@
 	      (lambda (&key data &allow-other-keys)
 		(message (string-trim data))))))
 
+(defun convert-to-array (start end quote)
+    "Quotes the words and separate it with a newline and comma.
+Used START and END region, and QUOTE symbol."
+    (interactive "r\nMQuote: ")
+    (let ((insertion
+	   (mapconcat
+	    (lambda (x) (format "%s%s%s" quote x quote))
+	    (split-string (buffer-substring start end))
+	    ",\n")))
+      (delete-region start end)
+      (insert insertion)))
+
 (provide 'utils)
 
 ;;; utils.el ends here
