@@ -4,19 +4,22 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'request)
+
 (defun system-uptime ()
   "Get system uptime."
   (interactive)
   (message
-   (replace-regexp-in-string "\n$" ""
-			     (shell-command-to-string "uptime"))))
+    (string-trim (shell-command-to-string "uptime"))))
 
 (defun current-weather ()
   "Get current weather."
   (interactive)
-  (message
-   (replace-regexp-in-string "\n$" ""
-			     (shell-command-to-string "curl -s 'wttr.in/?format=3'"))))
+  (request "https://wttr.in/?format=4"
+    :sync t
+    :success (cl-function
+	      (lambda (&key data &allow-other-keys)
+		(message (string-trim data))))))
 
 (provide 'utils)
 
