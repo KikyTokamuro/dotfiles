@@ -75,8 +75,13 @@
   (setq dashboard-startup-banner 'logo
 	dashboard-items '((recents . 5)))
   (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice
-	(lambda () (get-buffer "*dashboard*"))))
+  (defun my-server-dashboard-hook ()
+    (switch-to-buffer dashboard-buffer-name)
+    (dashboard-mode)
+    (dashboard-insert-startupify-lists)
+    (dashboard-refresh-buffer))
+  (add-hook 'server-after-make-frame-hook 'my-server-dashboard-hook))
+
 
 ;; Treemacs
 (use-package treemacs
