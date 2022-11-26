@@ -74,7 +74,9 @@
   :config
   (setq dashboard-startup-banner 'logo
 	dashboard-items '((recents . 5)))
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice
+	(lambda () (get-buffer "*dashboard*"))))
 
 ;; Treemacs
 (use-package treemacs
