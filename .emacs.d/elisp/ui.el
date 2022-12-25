@@ -8,11 +8,11 @@
   :ensure t
   :hook ((prog-mode org-mode) . hl-line-mode))
 
-;; Zenburn theme
-(use-package zenburn-theme
+;; Doom themes
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'doom-opera t))
 
 ;; Solarized theme (Colors)
 ;; (use-package solarized-theme
