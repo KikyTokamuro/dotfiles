@@ -18,7 +18,7 @@
       (modules '(server packages settings ui
 		 path spell company lsp
 		 flycheck org webdev golang
-		 lisp c perl php ocaml
+		 lisp c perl python php ocaml
 		 web-tools utils)))
   (dolist (module modules)
     (let ((file (concat my-modules-dir (symbol-name module) ".el")))
