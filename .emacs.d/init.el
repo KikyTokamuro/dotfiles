@@ -15,10 +15,10 @@
 
 ;; Load modules
 (let ((my-modules-dir "~/.emacs.d/elisp/")
-      (modules '(server packages settings ui
+      (modules '(packages settings ui
 		 path spell company lsp
-		 flycheck org webdev golang
-		 lisp c perl python php ocaml
+		 flycheck org webdev
+		 lisp c python golang
 		 web-tools utils)))
   (dolist (module modules)
     (let ((file (concat my-modules-dir (symbol-name module) ".el")))

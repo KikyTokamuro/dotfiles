@@ -8,9 +8,8 @@
  '(cua-mode t nil (cua-base))
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
- '(haskell-stylish-on-save t)
  '(package-selected-packages
-   '(centaur-tabs ob-php merlin-company utop telephone-line geiser-guile geiser flycheck php-mode web-beautify google-translate elfeed rainbow-delimiters paredit ## ccls company-lsp lsp-ui lsp-mode eww-lnum sly diminish which-key dashboard use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
+   '(protobuf-mode zetteldeft request centaur-tabs ob-php merlin-company utop telephone-line geiser-guile geiser flycheck php-mode web-beautify google-translate elfeed rainbow-delimiters paredit ## ccls company-lsp lsp-ui lsp-mode eww-lnum sly diminish which-key dashboard use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))

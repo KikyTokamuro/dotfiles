@@ -8,11 +8,11 @@
   :ensure t
   :hook ((prog-mode org-mode) . hl-line-mode))
 
-;; Doom themes
-(use-package doom-themes
+;; Modus themes 
+(use-package modus-themes
   :ensure t
   :config
-  (load-theme 'doom-opera t))
+  (load-theme 'modus-operandi t))
 
 ;; Solarized theme (Colors)
 ;; (use-package solarized-theme
@@ -27,16 +27,6 @@
 ;; 		      :height 1.0
 ;; 		      :overline nil
 ;; 		      :underline nil))
-
-;; Telephone-line
-(use-package telephone-line
-  :ensure t
-  :config
-  (setq telephone-line-primary-left-separator 'telephone-line-nil
-	telephone-line-secondary-left-separator 'telephone-line-nil
-	telephone-line-primary-right-separator 'telephone-line-nil
-	telephone-line-secondary-right-separator 'telephone-line-nil)
-  (telephone-line-mode 1))
 
 ;; Smooth-scrolling
 (use-package smooth-scrolling
@@ -68,21 +58,6 @@
   (which-key-mode)
   :diminish which-key-mode)
 
-;; Dashboard
-(use-package dashboard
-  :ensure t
-  :config
-  (setq dashboard-startup-banner 'logo
-	dashboard-items '((recents . 5)))
-  (dashboard-setup-startup-hook)
-  (defun my-server-dashboard-hook ()
-    (switch-to-buffer dashboard-buffer-name)
-    (dashboard-mode)
-    (dashboard-insert-startupify-lists)
-    (dashboard-refresh-buffer))
-  (add-hook 'server-after-make-frame-hook 'my-server-dashboard-hook))
-
-
 ;; Treemacs
 (use-package treemacs
   :ensure t
@@ -90,22 +65,22 @@
   (("C-x C-n" . treemacs)))
 
 ;; Centaur-tabs
-(use-package centaur-tabs
-  :ensure t
-  :demand
-  :config
-  (defun my-hide-centaur-tabs (buffer)
-    "Hide tabs with * in BUFFER name."
-    (let ((name (format "%s" buffer)))
-      (or
-       (string-prefix-p "*" name)
-       (centaur-tabs-hide-tab buffer))))
-  (setq centaur-tabs-set-bar 'over
-	 centaur-tabs-set-modified-marker t
-	 centaur-tabs-modifier-marker "."
-	 centaur-tabs-hide-tab-function 'my-hide-centaur-tabs)
-  (centaur-tabs-headline-match)
-  (centaur-tabs-mode t))
+;; (use-package centaur-tabs
+;;   :ensure t
+;;   :demand
+;;   :config
+;;   (defun my-hide-centaur-tabs (buffer)
+;;     "Hide tabs with * in BUFFER name."
+;;     (let ((name (format "%s" buffer)))
+;;       (or
+;;        (string-prefix-p "*" name)
+;;        (centaur-tabs-hide-tab buffer))))
+;;   (setq centaur-tabs-set-bar 'over
+;; 	centaur-tabs-set-modified-marker t
+;; 	centaur-tabs-modifier-marker "."
+;; 	centaur-tabs-hide-tab-function 'my-hide-centaur-tabs)
+;;   (centaur-tabs-headline-match)
+;;   (centaur-tabs-mode t))
 
 ;; Helm
 (use-package helm
