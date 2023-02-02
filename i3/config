@@ -12,9 +12,6 @@ font pango:Source Code Pro 9
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $i3lockwall --nofork
@@ -39,6 +36,10 @@ tiling_drag modifier titlebar
 
 # start emacs
 bindsym XF86Launch1 exec --no-startup-id ~/.emacs.d/my-emacsclient.sh
+
+# screenshot
+bindsym Print exec --no-startup-id scrot ~/Изображения/%Y-%m-%d_%H:%M:%S.png
+#bindsym $mod+Print exec --no-startup-id scrot -s ~/Изображения/%Y-%m-%d_%H:%M:%S.png
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
