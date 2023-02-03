@@ -3,7 +3,7 @@ set $i3lockwall sh ~/.config/i3/scripts/lock.sh
 set $mod Mod4
 
 # wallpaper
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
 # font
 font pango:Source Code Pro 9
