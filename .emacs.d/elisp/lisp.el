@@ -15,4 +15,10 @@
   :config
   (setq geiser-active-implementations '(guile)))
 
+;; Racket
+(use-package racket-mode
+  :ensure t
+  :hook
+  (racket-mode . racket-xp-mode))
+
 ;; lisp.el ends here

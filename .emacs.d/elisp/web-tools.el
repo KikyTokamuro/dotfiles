@@ -3,6 +3,10 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Request library
+(use-package request
+  :ensure t)
+
 ;; Eww-lnum
 (use-package eww-lnum
   :ensure t)

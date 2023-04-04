@@ -14,20 +14,6 @@
   :config
   (load-theme 'modus-operandi t))
 
-;; Solarized theme (Colors)
-;; (use-package solarized-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'solarized-selenized-light t)
-;;   (set-face-attribute 'mode-line nil
-;; 		      :height 1.0
-;; 		      :overline nil
-;; 		      :underline nil)
-;;   (set-face-attribute 'mode-line-inactive nil
-;; 		      :height 1.0
-;; 		      :overline nil
-;; 		      :underline nil))
-
 ;; Smooth-scrolling
 (use-package smooth-scrolling
   :ensure t
@@ -58,30 +44,6 @@
   (which-key-mode)
   :diminish which-key-mode)
 
-;; Treemacs
-(use-package treemacs
-  :ensure t
-  :bind
-  (("C-x C-n" . treemacs)))
-
-;; Centaur-tabs
-;; (use-package centaur-tabs
-;;   :ensure t
-;;   :demand
-;;   :config
-;;   (defun my-hide-centaur-tabs (buffer)
-;;     "Hide tabs with * in BUFFER name."
-;;     (let ((name (format "%s" buffer)))
-;;       (or
-;;        (string-prefix-p "*" name)
-;;        (centaur-tabs-hide-tab buffer))))
-;;   (setq centaur-tabs-set-bar 'over
-;; 	centaur-tabs-set-modified-marker t
-;; 	centaur-tabs-modifier-marker "."
-;; 	centaur-tabs-hide-tab-function 'my-hide-centaur-tabs)
-;;   (centaur-tabs-headline-match)
-;;   (centaur-tabs-mode t))
-
 ;; Helm
 (use-package helm
   :ensure t
@@ -91,5 +53,27 @@
   (("M-x" . helm-M-x)
    ("C-x C-f" . 'helm-find-files)
    ("C-x C-b" . 'helm-buffers-list)))
+
+;; Projectile
+(use-package projectile
+  :diminish projectile-mode
+  :config
+  (projectile-mode 1)
+  :custom
+  ((projectile-completion-system 'helm))
+  :ensure t
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/work/")
+    (setq projectile-project-search-path '("~/work"))))
+
+;; Helm-projectile
+(use-package helm-projectile
+  :ensure t
+  :init
+  (helm-projectile-on)
+  :config
+  (setq projectile-switch-project-action 'helm-projectile))
 
 ;; ui.el ends here

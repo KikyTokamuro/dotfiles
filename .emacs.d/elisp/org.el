@@ -10,7 +10,8 @@
   (setq org-html-validation-link nil)
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((php        . t)
+   '((org        . t)
+     (php        . t)
      (python     . t)
      (perl       . t)
      (C          . t)

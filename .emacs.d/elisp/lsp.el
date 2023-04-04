@@ -7,6 +7,8 @@
 (use-package lsp-mode
   :commands lsp
   :ensure t
+  :bind-keymap
+  ("C-c l" . lsp-command-map)
   :config
   (setq lsp-headerline-breadcrumb-enable nil))
 

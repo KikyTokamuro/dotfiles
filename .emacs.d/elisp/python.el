@@ -7,6 +7,7 @@
 ;;; pip install python-language-server[all]
 ;;; pip install pyls-black pyls-isort pyls-mypy
 ;;; pip install future
+;;; 
 (use-package python-mode
   :config
   (lsp-register-custom-settings
