@@ -51,7 +51,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id dmenu_run
 
 # rofi
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -theme Paper -show run' 
+bindsym $mod+d exec --no-startup-id rofi -theme Paper -show drun -show-icons -modi drun 
 
 # change focus
 bindsym $mod+j focus left
