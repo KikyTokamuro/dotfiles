@@ -3,14 +3,12 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Ccls
-(use-package ccls
-  :ensure t
-  :config
-  (setq ccls-executable "ccls"
-	lsp-prefer-flymake nil)
-  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  :hook
-  ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp))))
+(defun my-c/c++-mode-hook ()
+  "C/C++ mode hook."
+  (setq lsp-prefer-flymake nil)
+  (lsp))
+
+(add-hook 'c-mode-hook 'my-c/c++-mode-hook)
+(add-hook 'c++-mode-hook 'my-c/c++-mode-hook)
 
 ;; c.el ends here

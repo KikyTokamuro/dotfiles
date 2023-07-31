@@ -9,7 +9,7 @@
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(helm-projectile projectile racket-mode ob-go weblorg protobuf-mode zetteldeft request centaur-tabs ob-php merlin-company utop telephone-line geiser-guile geiser flycheck php-mode web-beautify google-translate elfeed rainbow-delimiters paredit ## ccls company-lsp lsp-ui lsp-mode eww-lnum sly diminish which-key dashboard use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
+   '(elpher rainbow-mode helm-projectile projectile racket-mode ob-go protobuf-mode zetteldeft request ob-php utop telephone-line geiser-guile geiser flycheck php-mode web-beautify google-translate elfeed rainbow-delimiters paredit ## company-lsp lsp-ui lsp-mode eww-lnum sly diminish which-key use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
