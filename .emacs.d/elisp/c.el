@@ -5,8 +5,7 @@
 
 (defun my-c/c++-mode-hook ()
   "C/C++ mode hook."
-  (setq lsp-prefer-flymake nil)
-  (lsp))
+  (eglot-ensure))
 
 (add-hook 'c-mode-hook 'my-c/c++-mode-hook)
 (add-hook 'c++-mode-hook 'my-c/c++-mode-hook)

@@ -8,7 +8,7 @@
   :ensure t
   :hook ((prog-mode org-mode) . hl-line-mode))
 
-;; Modus themes 
+;; Modus themes
 (use-package modus-themes
   :ensure t
   :config

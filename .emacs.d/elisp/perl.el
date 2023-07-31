@@ -16,13 +16,8 @@
         cperl-close-paren-offset -4
         cperl-electric-keywords t
         cperl-label-offset 0)
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("node" "/home/kiky/work/PerlNavigator/server/out/server.js" "--stdio"))
-		    :major-modes '(cperl-mode perl-mode)
-		    :priority 10
-		    :server-id 'perl-ls))
   :hook
-  (cperl-mode . lsp))
+  (cperl-mode . eglot-ensure))
 
 (defun perltidy-region ()
   "Run perltidy on the current region."

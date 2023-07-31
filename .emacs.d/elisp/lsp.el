@@ -3,18 +3,8 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Lsp-mode
-(use-package lsp-mode
-  :commands lsp
-  :ensure t
-  :bind-keymap
-  ("C-c l" . lsp-command-map)
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil))
-
-;; Lsp-ui
-(use-package lsp-ui
-  :commands lsp-ui-mode
+;; Eglot
+(use-package eglot
   :ensure t)
 
 ;; lsp.el ends here

@@ -6,9 +6,8 @@
 ;; Go-mode hooks
 (defun my-go-hooks ()
   "Golang hooks."
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t)
-  (lsp))
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
+  (eglot-ensure))
 
 ;; Go-mode
 (use-package go-mode
