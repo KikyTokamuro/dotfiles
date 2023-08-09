@@ -5,6 +5,9 @@ set $mod Mod4
 # wallpaper
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
+# dunst
+exec --no-startup-id dunst
+
 # font
 font pango:Source Code Pro 9
 
