@@ -1,5 +1,7 @@
+notify = true
+
 widget = luastatus.require_plugin('battery-linux').widget {
-    period = 5,
+    period = 3 * 60,
     dev = 'BAT1',
     cb = function(t)
         local symbol = ({
@@ -17,6 +19,15 @@ widget = luastatus.require_plugin('battery-linux').widget {
             full_text = string.format('%s %3d%%', symbol, t.capacity)
         end
 
+	if notify and t.capacity <= 25 and t.status == "Discharging" then
+	   os.execute("notify-send -u critical 'Battery Low' 'Please connect your charger.'")
+	   notify = false
+	end
+
+	if t.status == "Charging" then
+	   notify = true
+	end
+	
         return {{
             full_text = full_text,
             color = '#d68fff'
