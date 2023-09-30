@@ -1,5 +1,5 @@
 ;;; init.el --- Emacs init
-;; Copyright (C) 2021-2022 Arhangelsky Daniil (Kiky Tokamuro)
+;; Copyright (C) 2021-2023 Arhangelsky Daniil (Kiky Tokamuro)
 ;; Author: Arhangelsky Daniil (Kiky Tokamuro) <kiky.tokamuro@yandex.ru>
 ;;; Commentary:
 ;;; Code:
@@ -15,7 +15,7 @@
 
 ;; Load modules
 (let ((my-modules-dir "~/.emacs.d/elisp/")
-      (modules '(packages settings ui
+      (modules '(packages settings ui keyboard
 		 path spell company lsp
 		 flycheck org webdev
 		 lisp c python golang
