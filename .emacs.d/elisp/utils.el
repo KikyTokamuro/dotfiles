@@ -12,15 +12,6 @@
   (message
     (string-trim (shell-command-to-string "uptime"))))
 
-(defun current-weather ()
-  "Get current weather."
-  (interactive)
-  (request "https://wttr.in/?format=4"
-    :sync t
-    :success (cl-function
-	      (lambda (&key data &allow-other-keys)
-		(message (string-trim data))))))
-
 (defun convert-to-array (start end quote)
     "Quotes the words and separate it with a newline and comma.
 Used START and END region, and QUOTE symbol."

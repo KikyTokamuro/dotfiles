@@ -11,7 +11,6 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((org        . t)
-     (php        . t)
      (python     . t)
      (perl       . t)
      (C          . t)
@@ -21,18 +20,5 @@
      (shell      . t)
      (emacs-lisp . t)
      (js         . t))))
-
-;; Deft
-(use-package deft
-  :ensure t
-  :config
-  (setq deft-extensions '("org" "md" "txt")
-	deft-default-extension "org"))
-
-;; Deft + zettel
-(use-package zetteldeft
-  :after deft
-  :config
-  (zetteldeft-set-classic-keybindings))
 
 ;; org.el ends here

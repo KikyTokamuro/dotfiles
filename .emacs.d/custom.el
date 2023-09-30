@@ -8,10 +8,10 @@
  '(cua-mode t nil (cua-base))
  '(display-line-numbers-type nil)
  '(global-display-line-numbers-mode t)
+ '(menu-bar-mode nil)
  '(package-selected-packages
-   '(magit elpher rainbow-mode helm-projectile projectile racket-mode ob-go protobuf-mode zetteldeft request ob-php geiser-guile geiser flycheck php-mode web-beautify google-translate rainbow-delimiters paredit ## eww-lnum sly diminish which-key use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
+   '(reverse-im markdown-mode lua-mode htmlize eglot sly magit elpher rainbow-mode helm-projectile projectile racket-mode ob-go protobuf-mode request geiser-guile geiser flycheck web-beautify google-translate rainbow-delimiters paredit ## eww-lnum diminish which-key use-package company helm zzz-to-char smooth-scrolling go-mode flymake-go exec-path-from-shell))
  '(scroll-bar-mode nil)
- '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 ;; Custom font

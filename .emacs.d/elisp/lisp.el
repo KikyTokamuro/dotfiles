@@ -5,6 +5,7 @@
 
 ;; Sly (Common Lisp)
 (use-package sly
+  :ensure t
   :config
   (setq inferior-lisp-program "sbcl"))
 
@@ -13,7 +14,8 @@
   :mode
   ("\\.scm\\'" . scheme-mode)
   :config
-  (setq geiser-active-implementations '(guile)))
+  (setq geiser-active-implementations '(guile)
+	geiser-guile-binary "guile3.0"))
 
 ;; Racket
 (use-package racket-mode
