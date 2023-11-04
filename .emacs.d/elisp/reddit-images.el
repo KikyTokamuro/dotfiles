@@ -1,4 +1,4 @@
-;;; reddit-images.el --- Subbredit new images viewver
+;;; reddit-images.el --- Subreddit new images viewver
 
 ;; Author:  Daniil Arkhangelsky (Kiky Tokamuro) <kiky.tokamuro@yandex.ru>
 ;; Created: November 2023
