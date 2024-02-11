@@ -26,12 +26,13 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
-;; Linum
-(use-package linum
+;; Line numbers
+(use-package display-line-numbers
+  :ensure nil
   :config
-  (setq linum-format " %d")
+  (setq-default display-line-numbers-type 'absolute)
   :hook
-  (prog-mode . linum-mode))
+  ((prog-mode conf-mode) . display-line-numbers-mode))
 
 ;; Diminish
 (use-package diminish
