@@ -45,6 +45,12 @@
   (which-key-mode)
   :diminish which-key-mode)
 
+;; Treemacs
+(use-package treemacs
+  :ensure t
+  :init
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+
 ;; Helm
 (use-package helm
   :ensure t
