@@ -4,6 +4,10 @@ widget = luastatus.require_plugin('battery-linux').widget {
     period = 3 * 60,
     dev = 'BAT1',
     cb = function(t)
+        if t.capacity == nil then
+	    return nil
+        end
+
         local symbol = ({
             Charging = '',
             Discharging = ''
