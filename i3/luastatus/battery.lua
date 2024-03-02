@@ -5,7 +5,7 @@ widget = luastatus.require_plugin('battery-linux').widget {
     dev = 'BAT1',
     cb = function(t)
         if t.capacity == nil then
-	    return nil
+	   return nil
         end
 
         local symbol = ({
