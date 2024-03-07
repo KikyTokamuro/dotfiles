@@ -49,7 +49,9 @@
 (use-package treemacs
   :ensure t
   :init
-  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+  :bind
+  ("<f5>" . treemacs))
 
 ;; Helm
 (use-package helm
